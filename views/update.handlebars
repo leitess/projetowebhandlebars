@@ -2,29 +2,28 @@
   <h1>Atualizar - Agendamento de Potenciais Clientes</h1>
   <h5>Sistema Utilizado para agendamento de serviços</h5>
 
-  <form class="row g-3">
+  <form action="/atualizar" method="POST" class="row g-3">
+    <input type="hidden" name="id" value="{{result.id}}">
     <div class="col-md-6">
       <label for="inputNome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="inputEmail4">
+      <input name="nome" type="text" class="form-control" id="inputEmail4"  value="{{result.nome}}">
     </div>
     <div class="col-md-6">
       <label for="inputTelefone" class="form-label">Telefone</label>
-      <input type="phone" class="form-control" id="inputTelefone">
+      <input name="telefone" type="phone" class="form-control" id="inputTelefone"  value="{{result.telefone}}">
     </div>
     <div class="col-md-6">
       <label for="inputOrigem" class="form-label">Origem</label>
-      <select id="inputOrigem" class="form-select">
-        <option selected>Celular</option>
-        <option>Fixo</option>
+      <input name="origem" type="phone" class="form-control" id="inputTelefone"  value="{{result.origem}}">
       </select>
     </div>
     <div class="col-md-6">
       <label for="inputDataContato" class="form-label">Data do Contato:</label>
-      <input type="date" class="form-control" id="inputDataContato" placeholder="mm/dd/yyyy">
+      <input name="data_contato"  type="date" class="form-control" id="inputDataContato" placeholder="mm/dd/yyyy" value="{{result.data_contato}}">
     </div>
     <div class="col-md-6">
       <label for="inputObservacao" class="form-label">Observação</label>
-      <textarea class="form-control" id="inputObservacao" rows="3"></textarea>
+      <textarea name="observacao" class="form-control" id="inputObservacao" rows="3">{{result.observacao}}</textarea>
     </div>
     <div class="col-12">
       <button type="submit" class="btn btn-primary">Editar</button>
