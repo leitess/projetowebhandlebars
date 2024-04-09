@@ -14,7 +14,9 @@
     </div>
     <div class="col-md-6">
       <label for="inputOrigem" class="form-label">Origem</label>
-      <input name="origem" type="phone" class="form-control" id="inputTelefone"  value="{{result.origem}}">
+      <select name="origem" id="inputOrigem" class="form-select" value="{{result.origem}}">
+        <option {{#if (isEqual "Celular" result.origem)}} selected {{/if}} value="Celular">Celular</option>
+        <option {{#if (isEqual "Fixo" result.origem)}} selected {{/if}} value="Fixo">Fixo</option>
       </select>
     </div>
     <div class="col-md-6">
