@@ -6,16 +6,35 @@ const agendamento = require("./models/agendamento")
 const app = express();
 
 const handlebars = require("express-handlebars").engine;
+
 app.engine("handlebars", handlebars({
   defaultLayout: "main",
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true,
+  },
+  helpers: {
+      // Função para fazer operações matemáticas no handlebars
+      math: function (lvalue, operator, rvalue) {
+          lvalue = parseFloat(lvalue);
+          rvalue = parseFloat(rvalue);
+          return {
+              "+": lvalue + rvalue,
+              "-": lvalue - rvalue,
+              "*": lvalue * rvalue,
+              "/": lvalue / rvalue,
+              "%": lvalue % rvalue
+          }[operator];
+      },
+      // Função para fazer comparação de valores no handlebars
+      isEqual: function (expectedValue, value) {
+          return value === expectedValue;
+      }
   }
-}));
+}))
+
 app.set("view engine", "handlebars");
 app.use(express.static(path.join(__dirname, '/public')));
-
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
